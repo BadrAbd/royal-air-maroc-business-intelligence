@@ -1,0 +1,69 @@
+RAM BI Dashboard
+
+Business Intelligence platform for analyzing Royal Air Maroc's flight operations — internship project.
+
+The project transforms raw booking/flight data (CSV) into a decision-support dashboard, through an ETL pipeline, a normalized data model (3NF) + star schema, a Laravel API, and a React frontend.
+
+Project structure
+
+RAM-BI-Dashboard/
+├── backend/          # Laravel API (routes, controllers, Eloquent models)
+├── frontend/          # React application (dashboard, components, charts)
+├── database/          # SQL scripts (table creation, ETL, normalization)
+└── README.md
+
+Tech stack
+
+LayerTechnologyDatabaseSQL ServerETL / cleaningSQL Server (T-SQL: staging tables, TRY_CONVERT, normalization scripts)BackendLaravel (REST API)FrontendReactMockupFigma
+
+Data model
+
+
+Vols — fact table (one row = one booking)
+LesRoutes — route dimension (City_Pair)
+Secteurs — geographic sub-dimension (Sector_Name_Lv2 → Group1)
+Agencies — agency dimension (code_agence → Country_Code)
+
+
+Available KPIs
+
+
+Total number of passengers
+Total number of reservations
+Monthly passenger evolution
+Monthly reservation evolution
+Top 10 routes
+Number of passengers per agency
+
+
+Installation
+
+Backend (Laravel)
+
+bashcd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+# configure the SQL Server connection in .env
+php artisan serve
+
+Frontend (React)
+
+bashcd frontend
+npm install
+npm run dev
+
+The API runs by default on http://localhost:8000, the frontend on http://localhost:5173.
+
+Environment variables (backend/.env)
+
+DB_CONNECTION=sqlsrv
+DB_HOST=localhost\SQLEXPRESS
+DB_PORT=1433
+DB_DATABASE=RAM_BI
+DB_USERNAME=
+DB_PASSWORD=
+
+Author
+
+Badr — BI Internship, EMSI
