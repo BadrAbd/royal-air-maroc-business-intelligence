@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\services\AgenceService;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class AgenceController extends Controller
@@ -12,8 +13,13 @@ class AgenceController extends Controller
     {
     }
 
-    public function passagers(): JsonResponse
+    public function passagers(Request $request): JsonResponse
     {
-        return response()->json($this->agenceService->getPassagersParAgence());
+        $annee = $request->query('annee');
+        $mois = $request->query('mois');
+
+        return response()->json(
+            $this->agenceService->getPassagersParAgence($annee, $mois)
+        );
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\services\RouteService;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class RouteController extends Controller
@@ -12,8 +13,13 @@ class RouteController extends Controller
     {
     }
 
-    public function top10(): JsonResponse
+    public function top10(Request $request): JsonResponse
     {
-        return response()->json($this->routeService->getTop10Routes());
+        $annee = $request->query('annee');
+        $mois = $request->query('mois');
+
+        return response()->json(
+            $this->routeService->getTop10Routes($annee, $mois)
+        );
     }
 }
