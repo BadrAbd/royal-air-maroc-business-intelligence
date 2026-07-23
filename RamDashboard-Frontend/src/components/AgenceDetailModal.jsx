@@ -34,7 +34,7 @@ export default function AgenceDetailModal({ agence, onClose }) {
           onClick={onClose}
           style={{
             marginTop: 20, width: '100%', padding: '8px 0', borderRadius: 8,
-            border: 'none', background: '#a41d29', color: '#fff', cursor: 'pointer', fontSize: 13,
+            border: 'none', background: '#AD321E', color: '#fff', cursor: 'pointer', fontSize: 13,
           }}
         >
           Fermer
